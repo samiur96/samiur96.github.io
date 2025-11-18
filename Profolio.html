@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Md. Samiur Rahman Sami - Junior Network & IT Support Specialist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary: #00c6ff;
+            --secondary: #0072ff;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --light: #f0f0f0;
+            --gray: #2a2a2a;
+            --light-gray: #3a3a3a;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+
+        }
+
+        /* Background Pattern */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(37, 99, 235, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(37, 99, 235, 0.05) 0%, transparent 20%),
+                linear-gradient(45deg, transparent 49%, rgba(37, 99, 235, 0.03) 50%, transparent 51%),
+                linear-gradient(135deg, transparent 49%, rgba(37, 99, 235, 0.03) 50%, transparent 51%);
+            background-size: 200px 200px, 300px 300px, 20px 20px, 20px 20px;
+            z-index: -1;
+            opacity: 0.3;
+        }
+
+        .container {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 198, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 100px 0 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(0, 198, 255, 0.1) 0%, transparent 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .profile-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .profile-img img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid rgba(0, 198, 255, 0.3);
+            object-fit: cover;
+            box-shadow: 0 0 50px rgba(0, 198, 255, 0.2);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--light-gray);
+            margin-bottom: 25px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 198, 255, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-item i {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            transform: translateY(-5px);
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: rgba(42, 42, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 198, 255, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            color: var(--primary);
+            font-size: 0.8rem;
+        }
+
+        /* Experience & Projects */
+        .timeline {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 50px;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 30px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 30px);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            top: 15px;
+            left: 50%;
+            margin-left: -10px;
+            border: 4px solid var(--dark);
+        }
+
+        .timeline-content {
+            background: rgba(42, 42, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 198, 255, 0.1);
+        }
+
+        .timeline-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .company {
+            color: #aaa;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content .duration {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Certifications & Education */
+        .cert-grid, .edu-grid, .activities-grid, .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-card, .edu-card, .activity-card, .language-card {
+            background: rgba(42, 42, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover, .edu-card:hover, .activity-card:hover, .language-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 198, 255, 0.1);
+        }
+
+        .cert-card h3, .edu-card h3, .activity-card h3, .language-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .cert-card .issuer, .edu-card .institution, .activity-card .organization {
+            color: #aaa;
+            margin-bottom: 10px;
+        }
+
+        .cert-card .date, .edu-card .date, .activity-card .period, .language-card .proficiency {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-details {
+            display: grid;
+            gap: 25px;
+        }
+
+        .contact-form {
+            background: rgba(42, 42, 42, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--light);
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(0, 198, 255, 0.05);
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            padding: 50px 0 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .footer-content p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0;
+                padding-left: 70px;
+                text-align: left;
+            }
+
+            .timeline-dot {
+                left: 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.appear {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo" onclick="scrollToSection('hero')">Md. Samiur Rahman Sami</div>
+                <div class="nav-links">
+                    <a href="#skills" onclick="scrollToSection('skills')">Skills</a>
+                    <a href="#experience" onclick="scrollToSection('experience')">Experience</a>
+                    <a href="#projects" onclick="scrollToSection('projects')">Projects</a>
+                    <a href="#certifications" onclick="scrollToSection('certifications')">Certifications</a>
+                    <a href="#education" onclick="scrollToSection('education')">Education</a>
+                    <a href="#contact" onclick="scrollToSection('contact')">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img">
+                    <img src="Sami.png" alt="Md. Samiur Rahman Sami">
+                </div>
+                <div class="hero-text">
+                    <h1>Md. Samiur Rahman Sami</h1>
+                    <h2>Junior Network Engineer & System Administrator</h2>
+                    <p>Hi, I’m Samiur Rahman. I’m finishing my Diploma in Computer Science and Technology and currently working in networking through my industrial attachment. 
+                        Over time, I’ve gained a good understanding of CCNA and MTCNA topics and built hands-on experience with Cisco routers, MikroTik devices, GNS3, and Packet Tracer. I like exploring different network setups, troubleshooting issues, and developing my skills step by step.
+
+                        My plan is to start my career in networking, move forward into cybersecurity, and eventually gain experience abroad while growing as an IT professional.</p>
+                    <div class="cta-buttons">
+                        <a href="Md. Samiur Rahman Sami.pdf" class="btn btn-primary">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" onclick="scrollToSection('contact')">
+                            <i class="fas fa-envelope"></i> Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title fade-in">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-network-wired"></i> Networking</h3>
+                    <ul class="skill-list">
+                        <li>Routing: OSPF, EIGRP, BGP, IS-IS, Static Routing, SLA, HSRP, Route Summarization</li>
+                        <li>Switching: VLANs, Inter-VLAN Routing, STP/RSTP, EtherChannel, Port Security</li>
+                        <li>Network Security: ACLs, Basic Firewall Configuration, Port Forwarding/NAT</li>
+                        <li>Protocols: TCP/IP, DHCP, DNS, ARP, ICMP, FTP/SFTP, SSH/Telnet, HTTP/HTTPS</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-tools"></i> Tools & Virtualization</h3>
+                    <ul class="skill-list">
+                        <li>Virtualization/Simulation: VMware, VirtualBox, Hyper-V, GNS3, Packet Tracer</li>
+                        <li>Tools & Utilities: Wireshark, Ping/Traceroute, WinBox, Putty/Tera term</li>
+                        <li>IT Support: Hardware/software repair, OS installation, driver troubleshooting</li>
+                        <li>System Administration: Windows config, BIOS/UEFI, storage monitoring</li>
+                    </ul>
+                </div>
+                <div class="skill-category fade-in">
+                    <h3><i class="fas fa-desktop"></i> Systems & Programming</h3>
+                    <ul class="skill-list">
+                        <li>PC Assembly & Maintenance: Upgrading components, troubleshooting</li>
+                        <li>CCTV & Security Systems: Installation & integration for small businesses</li>
+                        <li>Operating Systems: Windows 10/11, Linux (Ubuntu/Kali Linux/Mint), macOS</li>
+                        <li>Programming: Python basics & automation, Basic PowerShell/Bash Scripting</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title fade-in">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Junior Support Engineer</h3>
+                        <div class="company">IT Bangladesh</div>
+                        <div class="duration">September 2025 - Present</div>
+                        <p>• Provided network support on Cisco and MikroTik devices</p>
+                        <p>• Assisted in configuring Routing, VLANs, DHCP, and basic firewall settings</p>
+                        <p>• Troubleshot hardware, software, and network issues for peers</p>
+                        <p>• Supported lab setup and testing in GNS3 and Packet Tracer</p>
+                        
+                    </div>
+                </div>
+                <!--<div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>IT Support Specialist</h3>
+                        <div class="company">Local Computer Repair Shop</div>
+                        <div class="duration">2021 - 2022</div>
+                        <p>Provided hardware and software troubleshooting, OS installations, driver management, and basic network setup for client systems. Gained hands-on experience with various computer components and operating systems.</p>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Network Lab Assistant</h3>
+                        <div class="company">Barisal Polytechnic Institute</div>
+                        <div class="duration">2021 - Present</div>
+                        <p>Assisted in setting up and maintaining network laboratory equipment, helped students with networking concepts, and participated in various networking projects and experiments.</p>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title fade-in">Projects</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Networking Labs</h3>
+                        <div class="company">Academic Project</div>
+                        <p>Built small office/home network setups in Packet Tracer/GNS3. Hands-on practice in Routing & Switching with simulation tools and real devices.</p>
+                        <div class="tech-tags">
+                            <span class="tag">Packet Tracer</span>
+                            <span class="tag">GNS3</span>
+                            <span class="tag">Routing</span>
+                            <span class="tag">Switching</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>System Troubleshooting & IT Support</h3>
+                        <div class="company">Practical Experience</div>
+                        <p>Installed operating systems, managed drivers, and repaired hardware/software issues for peer systems. Configured Windows settings, BIOS/UEFI, and monitored storage.</p>
+                        <div class="tech-tags">
+                            <span class="tag">Windows</span>
+                            <span class="tag">Hardware</span>
+                            <span class="tag">Troubleshooting</span>
+                            <span class="tag">BIOS/UEFI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>CCTV Setup</h3>
+                        <div class="company">Small Business Project</div>
+                        <p>Configured CCTV cameras for small business use (local setup). Integrated security systems with network infrastructure for remote monitoring capabilities.</p>
+                        <div class="tech-tags">
+                            <span class="tag">CCTV</span>
+                            <span class="tag">Security</span>
+                            <span class="tag">Network Integration</span>
+                            <span class="tag">Installation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title fade-in">Certifications & Training</h2>
+            <div class="cert-grid">
+                <div class="cert-card fade-in">
+                    <h3>CCNA, MTCNA</h3>
+                    <div class="issuer">IT Bangladesh</div>
+                    <div class="date">2025</div>
+                    <p>Comprehensive certification covering networking fundamentals, routing and switching, and basic network security concepts.</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <h3>Basic Hardware, CCTV & IP Camera</h3>
+                    <div class="issuer">IT Bangladesh</div>
+                    <div class="date">2025</div>
+                    <p>Hands-on training in hardware components, and CCTV/IP camera installation and configuration.</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <h3>Data Analysis with Excel</h3>
+                    <div class="issuer">Futurenation</div>
+                    <div class="date">2025</div>
+                    <p>Microsoft Excel, Data Analysis, Data Entry, Looker (Software)</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <h3>Digital Marketing</h3>
+                    <div class="issuer">ECIT-003</div>
+                    <div class="date">2024</div>
+                    <p>Digital Marketing, Social Media Marketing, Facebook Marketing, Search Engine Optimization (SEO), Digital Marketing through Paid Channels.</p>
+                </div>
+                <div class="cert-card fade-in">
+                    <h3>Computer Operation</h3>
+                    <div class="issuer">NTVQF Level-I</div>
+                    <div class="date">2022</div>
+                    <p>Basic computer operations, typing in English & Bangla, and proficiency in MS Office applications (Word, Excel, PowerPoint) with knowledge of workplace safety (OSH) practices.</p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title fade-in">Education</h2>
+            <div class="edu-grid">
+                <div class="edu-card fade-in">
+                    <h3>Diploma in Computer Science and Technology</h3>
+                    <div class="institution">Barisal Polytechnic Institute, Barisal Shadar, Barisal</div>
+                    <div class="date">2021-2025</div>
+                    <p>Currently in the final semester with an excellent academic record. Last Semester GPA 3.83 out of 4.00.</p>
+                </div>
+                <div class="edu-card fade-in">
+                    <h3>SSC in Computer and Information Technology</h3>
+                    <div class="institution">Barisal Technical School and College, Barisal Shadar, Barisal</div>
+                    <div class="date">2019-2020</div>
+                    <p>Completed with outstanding results. GPA 4.93 out of 5.00.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extracurricular Activities Section -->
+    <section id="activities">
+        <div class="container">
+            <h2 class="section-title fade-in">Extracurricular Activities</h2>
+            <div class="activities-grid">
+                <div class="activity-card fade-in">
+                    <h3>Rover Scout (Rover Mate)</h3>
+                    <div class="organization">Barisal Polytechnic Institute</div>
+                    <div class="period">2021-2024</div>
+                    <p>Active member of the Rover Scout program, participating in community service, leadership development, and outdoor activities. Developed teamwork and organizational skills through various scouting events.</p>
+                </div>
+                <div class="activity-card fade-in">
+                    <h3>Associate Secretary Science & Technology</h3>
+                    <div class="organization">Barisal Polytechnic Institute</div>
+                    <div class="period">2023-2024</div>
+                    <p>Served as Associate Secretary for the Science & Technology department, organizing technical events, workshops, and competitions. Helped coordinate student activities and promoted scientific learning among peers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <div class="container">
+            <h2 class="section-title fade-in">Languages</h2>
+            <div class="languages-grid">
+                <div class="language-card fade-in">
+                    <h3>Bangla</h3>
+                    <div class="proficiency">Native & Fluent</div>
+                    <p>Full proficiency in reading, writing, and speaking. Native language with complete command over grammar and vocabulary.</p>
+                </div>
+                <div class="language-card fade-in">
+                    <h3>English</h3>
+                    <div class="proficiency">C1 on Duolingo & Fluent</div>
+                    <p>Advanced proficiency with strong communication skills. Achieved C1 level on Duolingo English Test with excellent reading and writing abilities.</p>
+                </div>
+                <div class="language-card fade-in">
+                    <h3>Hindi/Urdu</h3>
+                    <div class="proficiency">Fluent - Speaking Only</div>
+                    <p>Fluent in spoken Hindi and Urdu with good comprehension skills. Can communicate effectively in informal and formal settings.</p>
+                </div>
+                <div class="language-card fade-in">
+                    <h3>German</h3>
+                    <div class="proficiency">A1 & Learning</div>
+                    <p>Beginner level proficiency. Currently studying German with focus on building foundational vocabulary and grammar skills.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-details fade-in">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Azimpur, Dhaka, Bangladesh</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>+880 1898-838269</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>sami.bsl10@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/samisamiur96/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/samiur96" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://tryhackme.com/p/samisamiur96" target="_blank"><i class="fas fa-shield-alt"></i></a>
+                        <a href="https://www.facebook.com/samisamiur96" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>Ready to discuss your next networking project or career opportunity</p>
+                <div class="social-links" style="justify-content: center;">
+                    <a href="https://www.linkedin.com/in/samisamiur96/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/samiur96" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://tryhackme.com/p/samisamiur96" target="_blank"><i class="fas fa-shield-alt"></i></a>
+                    <a href="https://www.facebook.com/samisamiur96" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Md. Samiur Rahman Sami. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Scroll animation
+        function animateOnScroll() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (elementPosition < screenPosition) {
+                    element.classList.add('appear');
+                }
+            });
+        }
+
+        // Initialize animations
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Mobile menu toggle (if needed)
+        // Add this functionality if you want a mobile menu
+    </script>
+</body>
+</html>
